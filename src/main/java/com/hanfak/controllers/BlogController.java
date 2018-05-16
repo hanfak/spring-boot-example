@@ -1,9 +1,6 @@
 package com.hanfak.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -33,5 +30,18 @@ public class BlogController {
     @RequestMapping(value = "/ex/bars/{numericId:[\\d]+}", method = GET)
     public String getBarsBySimplePathWithPathVariable(@PathVariable long numericId) {
         return "Get a specific Bar with id=" + numericId;
+    }
+
+    @RequestMapping(value = "/ex/bars", method = GET)
+    public String getBarBySimplePathWithRequestParam(@RequestParam("id") long id) {
+        return "Get a specific Bar with id=" + id;
+    }
+
+    @RequestMapping(
+            value = "/ex/bars",
+            params = { "id", "second" },
+            method = GET)
+    public String multipleParams(@RequestParam("id") long id, @RequestParam("second") String second) {
+        return "Narrow Get a specific Bar with id=" + id + " and second is: " + second;
     }
 }

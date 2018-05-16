@@ -17,3 +17,5 @@ localhost:8080
     -  http://localhost:8012/hanfak/ex/foos/asfsa // will fail
     -  http://localhost:8012/hanfak/ex/foos/123415 // will pass
 5. Use path parameters
+    -  http://localhost:8012/hanfak/ex/bars?id=100
+    -  http://localhost:8012/hanfak/ex/bars?id=100&second=something
