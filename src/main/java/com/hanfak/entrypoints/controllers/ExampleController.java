@@ -1,11 +1,11 @@
-package com.hanfak.controllers;
+package com.hanfak.entrypoints.controllers;
 
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
-public class BlogController {
+public class ExampleController {
     @RequestMapping(value = "/", method = GET)
     public String index() {
         return "You have reached the blog controller";
