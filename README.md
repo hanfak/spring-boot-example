@@ -13,4 +13,7 @@ localhost:8080
     - http://localhost:8090/hanfak/ex/foos/1
 4. Use configuration to set port
     - http://localhost:8012/hanfak/ex/foos/1
+6. Path variables using regex
+    -  http://localhost:8012/hanfak/ex/foos/asfsa // will fail
+    -  http://localhost:8012/hanfak/ex/foos/123415 // will pass
 5. Use path parameters

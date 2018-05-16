@@ -29,4 +29,9 @@ public class BlogController {
     public String getMorePathVar(@PathVariable("id") long id, @PathVariable("name") String name) {
         return "Get a specific Foo with id=" + id + " and name: " + name;
     }
+
+    @RequestMapping(value = "/ex/bars/{numericId:[\\d]+}", method = GET)
+    public String getBarsBySimplePathWithPathVariable(@PathVariable long numericId) {
+        return "Get a specific Bar with id=" + numericId;
+    }
 }
