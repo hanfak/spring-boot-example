@@ -12,4 +12,5 @@ localhost:8080
     - http://localhost:8090/hanfak/ex/foos/1/Han
     - http://localhost:8090/hanfak/ex/foos/1
 4. Use configuration to set port
-5. Use
+    - http://localhost:8012/hanfak/ex/foos/1
+5. Use path parameters
