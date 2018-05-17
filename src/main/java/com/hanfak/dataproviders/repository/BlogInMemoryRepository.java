@@ -6,6 +6,7 @@ import com.hanfak.entrypoints.controllers.BlogRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+// This is known as DAO
 public class BlogInMemoryRepository implements BlogRepository {
     //list of blog posts
     private List<Blog> blogs;

@@ -2,7 +2,7 @@
 
 First attempt at creating a spring web app
 
-localhost:8080
+**NOTE MAIN METHODN IN APPLICATION CLASS MUST BE OUTSIDE OF CONFIGURATION CLASSES**
 
 1. Application class with spring runner set
     - need to have a controller, as when go to uri, nothing can handle request
@@ -31,12 +31,35 @@ localhost:8080
     - The repository implementation used is a map, but can be changed at runtime via the bean to access a database
     - reordered packages to make it a more clean architecture
     - Controller method index(), return list<Blog>, this is serializable by jackson into json, so response is in json
-7. Controllers for other crud functions
-8. extract repository to usecase
-9. controller responible for just delegating action of request and delegating response is formed
-10. Return xml (https://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html)
-11. Unit testing
-12. Acceptance testing
-13. Talk to database, implement reopsitory that talks to h2 database
-14. Use JpaRepository to have in built methods
-xx. Use flyway, to setup database migration, maven to run flyway
+7. Set response and request headers, status code in controller
+    - return ResponseEntity, use of new instance and builder
+    - set single header and multiple headers
+    - use of constructor instead of autowired
+    - http://localhost:8012/hanfak/blah or http://localhost:8012/hanfak/blah1
+        - must add headers as specified in controller or returns 404
+
+### OThers
+
+- Controllers for other crud functions
+- extract repository to usecase
+- controller responible for just delegating action of request and delegating response is formed
+- Return xml (https://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html)
+- Unit testing
+- Acceptance testing
+- intgeration testing
+    - http://www.baeldung.com/integration-testing-in-spring
+- Talk to database, use sql queries implement repsitory that talks to h2 database
+- Use JpaRepository to have in built methods
+- USe custom JPA methods
+- Use flyway, to setup database migration, maven to run flyway
+- use hibernate (http://www.baeldung.com/hibernate-4-spring)
+- use mysql database
+- spring logging
+- spring actuator
+- static webpage/with some js
+- job scheduler
+- use jsp for web page
+- link to non http app, ie javafx or just simple main mmethod
+- dockerise, fabric8
+- use jetty server
+    - https://howtodoinjava.com/spring/spring-boot/configure-jetty-server/
