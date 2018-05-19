@@ -46,14 +46,17 @@ First attempt at creating a spring web app
         -  POST http://localhost:8012/hanfak/blog add new blog
             - with body {"id":10, "title":"a title" ,"content":"some content"}
             - Note if id should be unique, it is the responisbility of the repository to check that it is unique
-                - Throws exception and spring takes care of it
+                - Throws exception and spring takes care of it (to see this send same body with post)
         - PUT  http://localhost:8012/hanfak/blog/1 update new blog
             - with body {"id":1, "title":"a changed title" ,"content":"some changed content"}
         - DELETE  http://localhost:8012/hanfak/blog/1 delete a blog
-     -
-### OThers
+9. Handle exception using 'ExceptionHandler'
+    - Neater way to handle exceptions, define status code, add some loggin
+
+### Others
 
 - extract repository to usecase
+- Handle different exceptions using custom exceptions
 - controller responible for just delegating action of request and delegating response is formed
 - controller has delegator to form body for non database return values (ie requesters api requirements)
 - Return xml (https://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html)
