@@ -1,7 +1,7 @@
 package com.hanfak.dataproviders.repository;
 
 import com.hanfak.core.domain.Blog;
-import com.hanfak.entrypoints.controllers.BlogRepository;
+import com.hanfak.core.usecases.BlogRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,7 +108,7 @@ public class BlogInMemoryRepository implements BlogRepository {
 
     // delete blog by id
     @Override
-    public boolean deleteBlog(int id){
+    public boolean deleteBlog(int id) {
         int blogIndex = -1;
         for(Blog b: blogs) {
             if(b.getId() == id) {

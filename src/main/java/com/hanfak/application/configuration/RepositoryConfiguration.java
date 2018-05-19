@@ -1,7 +1,7 @@
 package com.hanfak.application.configuration;
 
+import com.hanfak.core.usecases.BlogRepository;
 import com.hanfak.dataproviders.repository.BlogInMemoryRepository;
-import com.hanfak.entrypoints.controllers.BlogRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,57 +1,57 @@
 package com.hanfak.entrypoints.controllers;
 
 import com.hanfak.core.domain.Blog;
-import com.hanfak.core.usecases.BlogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController
-public class BlogController {
+public class BlogTwoController {
 
-    @Autowired
-    // Avoid using as uses reflection
-    private BlogRepository blogRepository;
+    private BlogUseCase blogUseCase;
 
-    @GetMapping("/blog")
-    public List<Blog> index() {
-        return blogRepository.fetchBlogs();
+    public BlogTwoController(BlogUseCase blogUseCase) {
+        this.blogUseCase = blogUseCase;
     }
 
-    @GetMapping("/blog/{id}")
+    @GetMapping("/blog2")
+    public List<Blog> index() {
+        return blogUseCase.fetchBlogs();
+    }
+
+    @GetMapping("/blog2/{id}")
     public Blog show(@PathVariable String id) {
         int blogId = Integer.parseInt(id);
-        return blogRepository.getBlogById(blogId);
+        return blogUseCase.getBlogById(blogId);
     }
 
-    @PostMapping("/blog/search")
+    @PostMapping("/blog2/search")
     public List<Blog> search(@RequestBody Map<String, String> body) {
         String searchTerm = body.get("text");
-        return blogRepository.searchBlogs(searchTerm);
+        return blogUseCase.searchBlogs(searchTerm);
     }
 
-    @PostMapping("/blog")
+    @PostMapping("/blog2")
     public Blog create(@RequestBody Map<String, String> body) {
         int id = Integer.parseInt(body.get("id"));
         String title = body.get("title");
         String content = body.get("content");
-        return blogRepository.createBlog(id, title, content);
+        return blogUseCase.createBlog(id, title, content);
     }
 
-    @PutMapping("/blog/{id}")
+    @PutMapping("/blog2/{id}")
     public Blog update(@PathVariable String id, @RequestBody Map<String, String> body) {
         int blogId = Integer.parseInt(id);
         String title = body.get("title");
         String content = body.get("content");
-        return blogRepository.updateBlog(blogId, title, content);
+        return blogUseCase.updateBlog(blogId, title, content);
     }
 
 
-    @DeleteMapping("blog/{id}")
+    @DeleteMapping("blog2/{id}")
     public boolean delete(@PathVariable String id) {
         int blogId = Integer.parseInt(id);
-        return blogRepository.deleteBlog(blogId);
+        return blogUseCase.deleteBlog(blogId);
     }
 }

@@ -1,4 +1,4 @@
-package com.hanfak.entrypoints.controllers;
+package com.hanfak.core.usecases;
 
 import com.hanfak.core.domain.Blog;
 

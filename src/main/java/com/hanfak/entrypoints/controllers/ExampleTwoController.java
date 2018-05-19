@@ -1,6 +1,7 @@
 package com.hanfak.entrypoints.controllers;
 
 import com.hanfak.core.domain.Blog;
+import com.hanfak.core.usecases.BlogRepository;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

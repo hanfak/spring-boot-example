@@ -55,12 +55,16 @@ First attempt at creating a spring web app
 10. Add logging using slf4j and logback (via spring)
     - xml used to defined custom log output
     - can see in console
+11. Extract repository to usecase
+    - The controller should not have any knowledge of what happens to the request. This should be passed to elsehwere.
+    - Usecase will do all the app logic, call 3rd party api/db all via interfaces.
+        - Will do stuff and return somthing that needs to be part of response
+        - Can be
+    - Usecase implements interface which is called by controller, although does not need to as out layer (controller) does depend on inner layer (usecase) DIP
+
 
 ### Others
 
-11. Extract repository to usecase
-    - The controller should not have any knowledge of what happens to the request. This should be passed to elsehwere.
-    - Use
 - Example of using dto
 - Example using presenter to package response and send it to controller
 - Handle different exceptions using custom exceptions
