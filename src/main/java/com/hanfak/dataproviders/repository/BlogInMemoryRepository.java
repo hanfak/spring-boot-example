@@ -6,13 +6,15 @@ import com.hanfak.entrypoints.controllers.BlogRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
+
 // This is known as DAO
 public class BlogInMemoryRepository implements BlogRepository {
     //list of blog posts
     private List<Blog> blogs;
 
     public BlogInMemoryRepository(){
-        blogs = new ArrayList<Blog>();
+        blogs = new ArrayList<>();
         blogs.add(new Blog(1, "Go up, up and away with your Google Assistant",
                 "With holiday travel coming up, and 2018 just around the corner, " +
                         "you may be already thinking about getaways for next year. Consider " +
@@ -40,5 +42,76 @@ public class BlogInMemoryRepository implements BlogRepository {
     @Override
     public List<Blog> fetchBlogs() {
         return blogs;
+    }
+
+    // return blog by id
+    @Override
+    public Blog getBlogById(int id) {
+        for(Blog b: blogs) {
+            if(b.getId() == id) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    // search blog by text
+    @Override
+    public List<Blog> searchBlogs(String searchTerm) {
+        List<Blog> searchedBlogs = new ArrayList<>();
+        for(Blog b: blogs) {
+            if(b.getTitle().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    b.getContent().toLowerCase().contains(searchTerm.toLowerCase())) {
+                searchedBlogs.add(b);
+            }
+        }
+
+        return searchedBlogs;
+    }
+
+    // create blog
+    @Override
+    public Blog createBlog(int id, String title, String content) {
+        Blog newBlog = new Blog(id, title, content);
+        long blogsWithSameIdAsNewBlog = blogs.stream().filter(blog -> blog.getId() == id).count();
+        if(blogsWithSameIdAsNewBlog == 0) {
+            blogs.add(newBlog);
+        } else {
+            String message = "A blog with same id '%s' exists alread, cannot add a new blog id must be unique";
+            throw new IllegalArgumentException(format(message, id));
+        }
+        return newBlog;
+    }
+
+    // update blog
+    @Override
+    public Blog updateBlog(int id, String title, String content) {
+        for(Blog b: blogs) {
+            if(b.getId() == id) {
+                int blogIndex = blogs.indexOf(b);
+                b.setTitle(title);
+                b.setContent(content);
+                blogs.set(blogIndex, b);
+                return b;
+            }
+
+        }
+
+        return null;
+    }
+
+    // delete blog by id
+    @Override
+    public boolean deleteBlog(int id){
+        int blogIndex = -1;
+        for(Blog b: blogs) {
+            if(b.getId() == id) {
+                blogIndex = blogs.indexOf(b);
+            }
+        }
+        if(blogIndex > -1){
+            blogs.remove(blogIndex);
+        }
+        return true;
     }
 }

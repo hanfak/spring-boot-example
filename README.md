@@ -37,12 +37,25 @@ First attempt at creating a spring web app
     - use of constructor instead of autowired
     - http://localhost:8012/hanfak/blah or http://localhost:8012/hanfak/blah1
         - must add headers as specified in controller or returns 404
-
+8. Controllers for other crud functions
+    - Examples
+        -  GET http://localhost:8012/hanfak get all
+        -  GET http://localhost:8012/hanfak/1 get item with id = 1
+        -  POST http://localhost:8012/hanfak/blog/search Search blogs
+        - with body {"text:" : "<search term>"}
+        -  POST http://localhost:8012/hanfak/blog add new blog
+            - with body {"id":10, "title":"a title" ,"content":"some content"}
+            - Note if id should be unique, it is the responisbility of the repository to check that it is unique
+                - Throws exception and spring takes care of it
+        - PUT  http://localhost:8012/hanfak/blog/1 update new blog
+            - with body {"id":1, "title":"a changed title" ,"content":"some changed content"}
+        - DELETE  http://localhost:8012/hanfak/blog/1 delete a blog
+     -
 ### OThers
 
-- Controllers for other crud functions
 - extract repository to usecase
 - controller responible for just delegating action of request and delegating response is formed
+- controller has delegator to form body for non database return values (ie requesters api requirements)
 - Return xml (https://docs.spring.io/spring-boot/docs/current/reference/html/howto-spring-mvc.html)
 - Unit testing
 - Acceptance testing
@@ -51,15 +64,24 @@ First attempt at creating a spring web app
 - Talk to database, use sql queries implement repsitory that talks to h2 database
 - Use JpaRepository to have in built methods
 - USe custom JPA methods
+- Use foreign keys in data
 - Use flyway, to setup database migration, maven to run flyway
 - use hibernate (http://www.baeldung.com/hibernate-4-spring)
 - use mysql database
+- use in memory database for tests ie h2/darby
+- Call third party api
+- use different property files for different environments
 - spring logging
+- use logging template, customise
 - spring actuator
+- customise actuatur
+- create status page
 - static webpage/with some js
+- use a framework
 - job scheduler
 - use jsp for web page
 - link to non http app, ie javafx or just simple main mmethod
 - dockerise, fabric8
 - use jetty server
     - https://howtodoinjava.com/spring/spring-boot/configure-jetty-server/
+    - issues with configuring jetty in bean

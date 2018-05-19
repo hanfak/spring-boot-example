@@ -38,6 +38,10 @@ public class ExampleTwoController {
         headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
         headers.add("Tracey", UUID.randomUUID().toString());
 
-        return ResponseEntity.status(200).headers(headers).contentType(MediaType.APPLICATION_JSON_UTF8).body(blogRepository.fetchBlogs());
+        return ResponseEntity.
+                status(200).
+                headers(headers).
+                contentType(MediaType.APPLICATION_JSON_UTF8).
+                body(blogRepository.fetchBlogs());
     }
 }
