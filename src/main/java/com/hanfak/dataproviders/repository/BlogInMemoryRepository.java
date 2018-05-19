@@ -2,6 +2,8 @@ package com.hanfak.dataproviders.repository;
 
 import com.hanfak.core.domain.Blog;
 import com.hanfak.entrypoints.controllers.BlogRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,8 @@ import static java.lang.String.format;
 
 // This is known as DAO
 public class BlogInMemoryRepository implements BlogRepository {
+    private static final Logger LOGGER = LoggerFactory.getLogger(BlogInMemoryRepository.class);
+
     //list of blog posts
     private List<Blog> blogs;
 
@@ -72,6 +76,8 @@ public class BlogInMemoryRepository implements BlogRepository {
     // create blog
     @Override
     public Blog createBlog(int id, String title, String content) {
+        LOGGER.info("Going to map to add blog");
+
         Blog newBlog = new Blog(id, title, content);
         long blogsWithSameIdAsNewBlog = blogs.stream().filter(blog -> blog.getId() == id).count();
         if(blogsWithSameIdAsNewBlog == 0) {

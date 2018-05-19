@@ -52,10 +52,17 @@ First attempt at creating a spring web app
         - DELETE  http://localhost:8012/hanfak/blog/1 delete a blog
 9. Handle exception using 'ExceptionHandler'
     - Neater way to handle exceptions, define status code, add some loggin
+10. Add logging using slf4j and logback (via spring)
+    - xml used to defined custom log output
+    - can see in console
 
 ### Others
 
-- extract repository to usecase
+11. Extract repository to usecase
+    - The controller should not have any knowledge of what happens to the request. This should be passed to elsehwere.
+    - Use
+- Example of using dto
+- Example using presenter to package response and send it to controller
 - Handle different exceptions using custom exceptions
 - controller responible for just delegating action of request and delegating response is formed
 - controller has delegator to form body for non database return values (ie requesters api requirements)

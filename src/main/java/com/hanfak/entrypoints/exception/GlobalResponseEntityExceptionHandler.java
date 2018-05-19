@@ -1,5 +1,7 @@
 package com.hanfak.entrypoints.exception;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import static java.lang.String.format;
 
 @ControllerAdvice
 public class GlobalResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalResponseEntityExceptionHandler.class);
 
     @ExceptionHandler(value = Exception.class) // State specific exceptions for it to catch and handle
     public ResponseEntity<Object> defaultErrorHandler(Exception exception, WebRequest request) throws Exception {
@@ -23,6 +26,8 @@ public class GlobalResponseEntityExceptionHandler extends ResponseEntityExceptio
 
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        LOGGER.error(String.format("Exception processing request: %s", getRequestUri(request)), ex);
+
         return super.handleExceptionInternal(ex, body, headers, status, request);
     }
 

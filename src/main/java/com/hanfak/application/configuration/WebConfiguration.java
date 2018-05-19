@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class WebConfiguration {
-        @Bean
-        public EmbeddedServletContainerCustomizer containerCustomizer() {
-            return (container -> container.setPort(8012));
-        }
+    @Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
+        return (container -> container.setPort(8012));
+    }
 
     @Bean
     public GlobalResponseEntityExceptionHandler globalResponseEntityExceptionHandler() {
