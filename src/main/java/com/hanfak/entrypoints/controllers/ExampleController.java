@@ -1,6 +1,8 @@
 package com.hanfak.entrypoints.controllers;
 
 import com.hanfak.entrypoints.controllers.dto.ObjectDto;
+import com.hanfak.entrypoints.controllers.dto.XmlDto;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -46,12 +48,18 @@ public class ExampleController {
         return "Narrow Get a specific Bar with id=" + id + " and second is: " + second;
     }
 
-    @GetMapping(value = "/ex/dto/{id}")
+    @GetMapping(value = "/ex/dto/{id}", produces = "application/xml")
     public ObjectDto doSomethingReturnDTO(@PathVariable("id") int id) {
         if (id % 2 == 0) { // This is some logic, this should be in a usecase ??
             return new ObjectDto(false, true, "someString");
         }
         return new ObjectDto(false, false, "some other string");
+    }
 
+    @GetMapping(value = "/ex/xmldto/{id}", produces = { MediaType.APPLICATION_XML_VALUE })
+    public XmlDto doSomethingReturnXmlDTO(@PathVariable("id") int id) {
+        XmlDto xmlDto = new XmlDto();
+        xmlDto.setId(id);
+        return xmlDto;
     }
 }

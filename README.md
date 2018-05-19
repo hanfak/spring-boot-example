@@ -65,7 +65,12 @@ First attempt at creating a spring web app
     - allows object to be returned from the controller, and body is now json
         - field names are the keys, and constructor arg aer the variables
         - need getters, with standard naming conventions
-
+13. DTO turns to xml
+    - DTO must have a default constructor only
+        - use setters to build object
+    - use of annotations
+    - add dependency in xml
+    - http://localhost:8012/hanfak/ex/xmldto/1
 
 ### Others
 

@@ -11,7 +11,7 @@ public class ObjectDto {
         this.someString = someString;
     }
 
-    public boolean gethasBoolean() {
+    public boolean getHasBoolean() {
         return hasBoolean;
     }
 
@@ -19,7 +19,7 @@ public class ObjectDto {
         return isEven;
     }
 
-    public String someString() {
+    public String getSomeString() {
         return someString;
     }
 }
