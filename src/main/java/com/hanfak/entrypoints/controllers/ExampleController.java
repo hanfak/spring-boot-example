@@ -1,5 +1,6 @@
 package com.hanfak.entrypoints.controllers;
 
+import com.hanfak.entrypoints.controllers.dto.ObjectDto;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -43,5 +44,14 @@ public class ExampleController {
             method = GET)
     public String multipleParams(@RequestParam("id") long id, @RequestParam("second") String second) {
         return "Narrow Get a specific Bar with id=" + id + " and second is: " + second;
+    }
+
+    @GetMapping(value = "/ex/dto/{id}")
+    public ObjectDto doSomethingReturnDTO(@PathVariable("id") int id) {
+        if (id % 2 == 0) { // This is some logic, this should be in a usecase ??
+            return new ObjectDto(false, true, "someString");
+        }
+        return new ObjectDto(false, false, "some other string");
+
     }
 }

@@ -61,11 +61,14 @@ First attempt at creating a spring web app
         - Will do stuff and return somthing that needs to be part of response
         - Can be
     - Usecase implements interface which is called by controller, although does not need to as out layer (controller) does depend on inner layer (usecase) DIP
+12. Example of using dto
+    - allows object to be returned from the controller, and body is now json
+        - field names are the keys, and constructor arg aer the variables
+        - need getters, with standard naming conventions
 
 
 ### Others
 
-- Example of using dto
 - Example using presenter to package response and send it to controller
 - Handle different exceptions using custom exceptions
 - controller responible for just delegating action of request and delegating response is formed
